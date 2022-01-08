@@ -1,0 +1,220 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="8dp"
+    android:background="@color/white"
+    android:orientation="vertical"
+>
+
+        <FrameLayout
+            android:id="@+id/frame"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center_vertical"
+                android:padding="5dp"
+                android:src="@mipmap/ic_launcher_round"></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="3dp"
+                android:text="iFound"
+                android:textColor="#01CB8B"
+                android:textSize="@dimen/_20sdp"
+                android:textStyle="bold">
+
+            </TextView>
+
+
+        </FrameLayout>
+
+
+    <TextView
+        android:id="@+id/textview1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/frame"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:lines="2"
+        android:text="Find your lost item's with us.."
+        android:textSize="@dimen/_29sdp"
+        android:textStyle="bold"></TextView>
+
+
+    <EditText
+        android:id="@+id/simpleSearchView"
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_below="@id/textview1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:background="@drawable/rounded_corner"
+        android:drawableRight="@mipmap/ic_se"
+        android:gravity="center"
+        android:hint="  Find with us ?"
+        android:focusableInTouchMode="false"
+        android:lines="1"
+        android:maxLength="30"
+        android:paddingLeft="10dp"
+        android:paddingRight="-2dp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_15sdp" />
+
+
+
+    <RelativeLayout
+        android:id="@+id/foundrel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/simpleSearchView">
+
+        <TextView
+            android:id="@+id/textview3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:padding="10dp"
+            android:text="Found Items"
+            android:textSize="@dimen/_18sdp"
+            android:textStyle="bold"></TextView>
+
+        <ImageView
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:src="@drawable/ic_next"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true">
+
+        </ImageView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/foundrecyler"
+        android:layout_below="@+id/foundrel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/returneditemrecview"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_160sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/itemview_returned" />
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/progressBar"
+            style="@style/SpinKitView.Small.ChasingDots"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:visibility="visible"
+            app:SpinKit_Color="@color/colorPrimary"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/lostrel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/foundrecyler"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:padding="10dp"
+            android:text="Lost Items"
+            android:textSize="@dimen/_18sdp"
+            android:textStyle="bold"></TextView>
+
+        <ImageView
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_next">
+
+        </ImageView>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lostrel"
+        android:layout_marginBottom="@dimen/_30sdp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/lostitemrecview"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_160sdp"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/itemview_returned" />
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/progressBar1"
+            style="@style/SpinKitView.Small.ChasingDots"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:visibility="visible"
+            app:SpinKit_Color="@color/colorPrimary"/>
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+
+</RelativeLayout>
+
+
+
+</ScrollView>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_margin="8dp"
+    android:background="@android:color/background_light">
+
+
+    <TextView
+        android:id="@+id/Txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:text="Filter"
+        android:textColor="#01CB8B"
+        android:textSize="@dimen/_20sdp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_marginTop="0dp"
+        android:layout_below="@id/Txt"
+        android:layout_marginBottom="20dp"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider" />
+
+
+    <TextView
+        android:id="@+id/Txt1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/divider"
+        android:background="@color/cardview_light_background"
+        android:padding="10dp"
+        android:text="Set Location"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/Txt3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/divider"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/Txt1"
+        android:background="@color/cardview_light_background"
+        android:gravity="right"
+        android:padding="10dp"
+        android:textColor="#01CB8B"
+        android:text="* Clear Filter"
+        android:textSize="20sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:layout_below="@id/Txt1"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginBottom="1dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+
+        <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+            android:id="@+id/selectloc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:errorEnabled="true"
+            android:hint="Location"
+            android:textColor="#000000"
+            android:focusableInTouchMode="false"
+            tools:ignore="KeyboardInaccessibleWidget"
+            android:paddingStart="16dp"
+            android:paddingLeft="16dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="16dp"
+            android:paddingRight="16dp"
+            android:paddingBottom="16dp"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/nex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="350dp"
+        android:text="Apply"
+        android:layout_alignParentBottom="true"
+        android:textColor="#FFFFFF"
+        android:textSize="@dimen/_12sdp"
+        android:textStyle="bold"
+        app:backgroundTint="#01CB8B" />
+
+
+</RelativeLayout>
