@@ -88,24 +88,7 @@
             android:visibility="visible">
 
         </TextView>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="button">
 
-        </Button>
-
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="hghgh"
-            android:background="@drawable/rounded_corner"></Button>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="sawera\"
-            android:background="@color/black"
     </LinearLayout>
 
     <LinearLayout

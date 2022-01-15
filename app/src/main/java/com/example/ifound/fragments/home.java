@@ -17,6 +17,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -30,13 +31,18 @@ import com.example.ifound.fragments.adapters.ReturneditemrecviewAdopter;
 import com.example.ifound.model.Founditem;
 import com.example.ifound.model.Lostiitem;
 import com.example.ifound.model.Returnediitem;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -57,6 +63,8 @@ public class home extends Fragment {
     private ProgressBar mProgressCircle,mProgressCircle1;
     RelativeLayout foundrel,lostrel;
     EditText search;
+    TextView not;
+    private DatabaseReference mDatabase;
 
 
 
@@ -68,6 +76,38 @@ public class home extends Fragment {
         found = v.findViewById(R.id.found);
         lost = v.findViewById(R.id.lost);
         post = v.findViewById(R.id.post);
+        not = v.findViewById(R.id.textview6);
+        not.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                FragmentActivity activity = (FragmentActivity)(getContext());
+                FragmentManager fm = activity.getSupportFragmentManager();
+                Bundle args = new Bundle();
+
+                MyDialogFragment alertDialog = new MyDialogFragment();
+                alertDialog.show(fm,"simple dialog");
+            }
+        });
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+
+        String userId = FirebaseAuth.getInstance().getUid();
+
+
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (task.isSuccessful()) {
+                            String token = Objects.requireNonNull(task.getResult()).getToken();
+                            mDatabase.child("Users").child(userId).child("TokenId").setValue(token);
+                        }
+
+                    }
+                });
+
         search = v.findViewById(R.id.simpleSearchView);
     /*    foundcount = v.findViewById(R.id.foundcount);
         lostcount = v.findViewById(R.id.lostcount);*/

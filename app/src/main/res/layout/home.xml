@@ -71,15 +71,32 @@
         android:layout_marginBottom="@dimen/_8sdp"
         android:background="@drawable/rounded_corner"
         android:drawableRight="@mipmap/ic_se"
+        android:focusableInTouchMode="false"
         android:gravity="center"
         android:hint="  Find with us ?"
-        android:focusableInTouchMode="false"
         android:lines="1"
         android:maxLength="30"
         android:paddingLeft="10dp"
         android:paddingRight="-2dp"
         android:textColor="@color/black"
         android:textSize="@dimen/_15sdp" />
+
+    <TextView
+        android:id="@+id/textview6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/simpleSearchView"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:drawableLeft="@drawable/ic_notify"
+        android:layout_marginLeft="120dp"
+        android:layout_marginRight="120dp"
+        android:gravity="center_vertical"
+        android:lines="1"
+        android:text=" Let Us Find for You"
+        android:textSize="@dimen/_10sdp"
+        android:textStyle="bold"></TextView>
 
 
 
@@ -88,7 +105,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_below="@id/simpleSearchView">
+        android:layout_below="@id/textview6">
 
         <TextView
             android:id="@+id/textview3"

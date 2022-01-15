@@ -50,6 +50,7 @@ public class FounditemrecviewAdopter extends RecyclerView.Adapter <Founditemrecv
         list=adlist;
         notifyDataSetChanged();
     }
+
     public void locfilter(ArrayList<Founditem> loclist){
         list=loclist;
         notifyDataSetChanged();
