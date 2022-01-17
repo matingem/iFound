@@ -74,6 +74,53 @@ public class MyService extends Service
 
 
 
+        FirebaseDatabase receiverFirebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference receiverDatabaseReference = receiverFirebaseDatabase.getReference("Found Items");
+        receiverDatabaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NotNull DataSnapshot snapshot) {
+                list.clear();
+                if (snapshot.exists()){
+                    for (DataSnapshot data : snapshot.getChildren()){
+                        //String key = Objects.requireNonNull(data.child("key").getValue()).toString();
+                        String key = Objects.requireNonNull(data.child("key").getValue()).toString();
+                        String title = Objects.requireNonNull(data.child("title").getValue()).toString();
+                        String discription = Objects.requireNonNull(data.child("discriotion").getValue()).toString();
+                        String status = Objects.requireNonNull(data.child("city").getValue()).toString();
+                        String location = Objects.requireNonNull(data.child("location").getValue()).toString();
+                        String time = Objects.requireNonNull(data.child("time").getValue()).toString();
+                        String imageurl = Objects.requireNonNull(data.child("imageurl").getValue()).toString();
+                        String update = Objects.requireNonNull(data.child("status").getValue()).toString();
+                        String email = Objects.requireNonNull(data.child("email").getValue()).toString();
+                        String id = Objects.requireNonNull(data.child("uid").getValue()).toString();
+
+                        Founditem founditem = new Founditem(title, discription , email, location, time, status,imageurl,update,key,id);
+                        list.add(founditem);
+
+                    }
+
+
+
+                    //   mAdapter = new FounditemrecviewAdopter(getApplication(),list);;
+                    //   mAdapter.notifyDataSetChanged();
+
+
+
+                }else {
+                    Log.d(TAG, "onDataChange: no exist");
+                }
+                Log.d(TAG, "onDataChange:snapshot:"+snapshot.toString());
+
+            }
+
+            @Override
+            public void onCancelled(@NotNull DatabaseError error) {
+                Log.d(TAG, "onDataChange: error:"+error.getMessage());
+
+
+            }
+        });
+
         devicemodel = android.os.Build.MODEL;
         mStorageRef = FirebaseStorage.getInstance().getReference();
         database = FirebaseDatabase.getInstance();
@@ -107,52 +154,6 @@ public class MyService extends Service
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
-                FirebaseDatabase receiverFirebaseDatabase = FirebaseDatabase.getInstance();
-                DatabaseReference receiverDatabaseReference = receiverFirebaseDatabase.getReference("Found Items");
-                receiverDatabaseReference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NotNull DataSnapshot snapshot) {
-                        list.clear();
-                        if (snapshot.exists()){
-                            for (DataSnapshot data : snapshot.getChildren()){
-                                //String key = Objects.requireNonNull(data.child("key").getValue()).toString();
-                                String key = Objects.requireNonNull(data.child("key").getValue()).toString();
-                                String title = Objects.requireNonNull(data.child("title").getValue()).toString();
-                                String discription = Objects.requireNonNull(data.child("discriotion").getValue()).toString();
-                                String status = Objects.requireNonNull(data.child("city").getValue()).toString();
-                                String location = Objects.requireNonNull(data.child("location").getValue()).toString();
-                                String time = Objects.requireNonNull(data.child("time").getValue()).toString();
-                                String imageurl = Objects.requireNonNull(data.child("imageurl").getValue()).toString();
-                                String update = Objects.requireNonNull(data.child("status").getValue()).toString();
-                                String email = Objects.requireNonNull(data.child("email").getValue()).toString();
-                                String id = Objects.requireNonNull(data.child("id").getValue()).toString();
-
-                                Founditem founditem = new Founditem(title, discription , email, location, time, status,imageurl,update,key,id);
-                                list.add(founditem);
-
-                            }
-
-
-
-                            //   mAdapter = new FounditemrecviewAdopter(getApplication(),list);;
-                            //   mAdapter.notifyDataSetChanged();
-
-
-
-                        }else {
-                            Log.d(TAG, "onDataChange: no exist");
-                        }
-                        Log.d(TAG, "onDataChange:snapshot:"+snapshot.toString());
-
-                    }
-
-                    @Override
-                    public void onCancelled(@NotNull DatabaseError error) {
-                        Log.d(TAG, "onDataChange: error:"+error.getMessage());
-
-
-                    }
-                });
 
                 DatabaseReference rootRef = FirebaseDatabase.getInstance().getReference("Users");
 
@@ -169,7 +170,7 @@ public class MyService extends Service
 
                         ArrayList<Founditem> adlist =  new ArrayList<>();
                         for(Founditem item:list){
-                            if(item.getTitle().toLowerCase().contains("macbook".toLowerCase())){
+                            if(item.getTitle().toLowerCase().contains(query.toLowerCase())){
                                 adlist.add(item);
                             }
                         }
