@@ -360,7 +360,8 @@ public class founditem_post extends Fragment {
 
 
                                     String key = ref.push().getKey();
-                                    Founditem founditem = new Founditem(titles, Des , Email, loc, time, cit,uri.toString(),Status,key);
+                                    String id = FirebaseAuth.getInstance().getUid();
+                                    Founditem founditem = new Founditem(titles, Des , Email, loc, time, cit,uri.toString(),Status,key,id);
 
                                     ref.child(key).setValue(founditem);
 

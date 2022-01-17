@@ -8,12 +8,12 @@ public class Founditem
     private String email,status;
     private String location;
     private String time;
-    private String imageurl,city,key;
+    private String imageurl,city,key,Uid;
 
     public Founditem() {
     }
 
-    public Founditem(String title, String discriotion, String email, String location, String time, String city,String imageurl,String status,String key) {
+    public Founditem(String title, String discriotion, String email, String location, String time, String city,String imageurl,String status,String key,String uid) {
         this.title = title;
         this.discriotion = discriotion;
         this.email = email;
@@ -22,7 +22,7 @@ public class Founditem
         this.city = city ;
         this.imageurl = imageurl;
         this.status = status;
-        this.key = key;
+        this.key = key; this.Uid = uid;
     }
 
     public String getKey() {
@@ -31,6 +31,14 @@ public class Founditem
 
     public void setKey(String key) {
         this.key = key;
+    }
+
+    public String getUid() {
+        return Uid;
+    }
+
+    public void setUid(String uid) {
+        this.Uid = uid;
     }
 
     public String getTitle() {

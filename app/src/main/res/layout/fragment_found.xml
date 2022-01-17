@@ -78,8 +78,8 @@
     <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/progressBar"
         style="@style/SpinKitView.Small.ChasingDots"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
         android:gravity="center"

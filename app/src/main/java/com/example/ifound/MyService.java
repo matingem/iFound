@@ -125,8 +125,9 @@ public class MyService extends Service
                                 String imageurl = Objects.requireNonNull(data.child("imageurl").getValue()).toString();
                                 String update = Objects.requireNonNull(data.child("status").getValue()).toString();
                                 String email = Objects.requireNonNull(data.child("email").getValue()).toString();
+                                String id = Objects.requireNonNull(data.child("id").getValue()).toString();
 
-                                Founditem founditem = new Founditem(title, discription , email, location, time, status,imageurl,update,key);
+                                Founditem founditem = new Founditem(title, discription , email, location, time, status,imageurl,update,key,id);
                                 list.add(founditem);
 
                             }

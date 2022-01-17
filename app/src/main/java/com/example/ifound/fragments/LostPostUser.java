@@ -151,6 +151,7 @@ public class LostPostUser extends Fragment {
                     upload.setStatus(postSnapshot.child("city").getValue(String.class));
                     upload.setreward(postSnapshot.child("reward").getValue(String.class));
                     upload.setStatus(postSnapshot.child("status").getValue(String.class));
+                    upload.setUid(postSnapshot.child("uid").getValue(String.class));
 
 
                     mUploads.add(upload);

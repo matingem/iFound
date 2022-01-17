@@ -197,8 +197,9 @@ public class lost extends Fragment {
                         String imageurl = Objects.requireNonNull(data.child("imageurl").getValue()).toString();
                         String update = Objects.requireNonNull(data.child("status").getValue()).toString();
                         String email = Objects.requireNonNull(data.child("email").getValue()).toString();
+                        String id = Objects.requireNonNull(data.child("uid").getValue()).toString();
 
-                        Lostitem lostitem = new Lostitem(title, discription , email, location, time, status,imageurl,update,key);
+                        Lostitem lostitem = new Lostitem(title, discription , email, location, time, status,imageurl,update,key,id);
                         list.add(lostitem);
                     }
                     Log.d(TAG, "onDataChange: length:"+list.size());

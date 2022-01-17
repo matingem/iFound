@@ -8,12 +8,12 @@ public class Lostitem
     private String email,status;
     private String reward;
     private String time;
-    private String imageurl,city,key;
+    private String imageurl,city,key,Uid;
 
     public Lostitem() {
     }
 
-    public Lostitem(String title, String discriotion, String email, String reward, String time, String city,String imageurl,String status,String key) {
+    public Lostitem(String title, String discriotion, String email, String reward, String time, String city,String imageurl,String status,String key,String uid) {
         this.title = title;
         this.discriotion = discriotion;
         this.email = email;
@@ -23,6 +23,15 @@ public class Lostitem
         this.imageurl = imageurl;
         this.status = status;
         this.key = key;
+        this.Uid = uid;
+    }
+
+    public String getUid() {
+        return Uid;
+    }
+
+    public void setUid(String uid) {
+        this.Uid = uid;
     }
 
     public String getKey() {

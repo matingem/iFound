@@ -2,6 +2,7 @@ package com.example.ifound.fragments.adapters;
 
 
 import android.content.Context;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +10,21 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ifound.R;
 import com.example.ifound.model.Founditem;
 import com.example.ifound.model.Lostitem;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
@@ -24,6 +35,7 @@ import java.util.List;
 
 public class LostitemrecviewAdopter extends RecyclerView.Adapter <LostitemrecviewAdopter.ViewHolder>{
     private List<Lostitem> list;
+    StorageReference storageReference;
     private Context mContext;
 
     // RecyclerView recyclerView;
@@ -50,6 +62,8 @@ public class LostitemrecviewAdopter extends RecyclerView.Adapter <Lostitemrecvie
         final String location = lostitem.getreward();
         final String time = lostitem.getTime();
         final  String update = lostitem.getStatus();
+        final  String id = lostitem.getUid();
+
 
         holder.tv_title.setText(title);
         holder.tv_discription.setText(discriotion);
@@ -62,6 +76,37 @@ public class LostitemrecviewAdopter extends RecyclerView.Adapter <Lostitemrecvie
                 .fit()
                 .centerInside()
                 .into(holder.image);
+
+
+        DatabaseReference ref4= FirebaseDatabase.getInstance().getReference().child("Users").child(id);
+
+        ref4.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                String namee = dataSnapshot.child("Name").getValue(String.class);
+                holder.name.setText(namee);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+
+        });
+
+        storageReference = FirebaseStorage.getInstance().getReference();
+
+        StorageReference profileRef = storageReference.child("Users/" + id + "/profilepicture.jpg");
+        profileRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).into(holder.images);
+            }
+        });
+
 
         if(update.equals("Founded")){
 
@@ -96,15 +141,18 @@ public class LostitemrecviewAdopter extends RecyclerView.Adapter <Lostitemrecvie
         private final TextView tv_discription;
         private final TextView tv_status;
         private final TextView tv_location;
-        private final TextView tv_time;
+        private final TextView tv_time,name;
         ImageView image;
+        CircularImageView images;
         Button lost;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
             tv_title = itemView.findViewById(R.id.tv_title);
+            name = itemView.findViewById(R.id.myname);
             lost = itemView.findViewById(R.id.lost);
+            images = itemView.findViewById(R.id.pp);
             tv_discription = itemView.findViewById(R.id.tv_description);
             tv_status = itemView.findViewById(R.id.tv_status);
             tv_location = itemView.findViewById(R.id.tv_location);

@@ -152,6 +152,7 @@ public class FoundPostUser extends Fragment {
                     upload.setcity(postSnapshot.child("city").getValue(String.class));
                     upload.setLocation(postSnapshot.child("location").getValue(String.class));
                     upload.setStatus(postSnapshot.child("status").getValue(String.class));
+                    upload.setUid(postSnapshot.child("uid").getValue(String.class));
 
 
                     mUploads.add(upload);

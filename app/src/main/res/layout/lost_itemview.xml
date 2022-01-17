@@ -14,11 +14,36 @@
 
 
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_margin="8dp">
+
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/pp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:scaleType="centerCrop"
+                    android:src="@color/colorPrimary" />
+
+                <TextView
+                    android:id="@+id/myname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="mynameis"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/_13sdp">
+
+                </TextView>
+            </LinearLayout>
+
 
             <ImageView
                 android:id="@+id/choose_image"

@@ -347,7 +347,8 @@ public class lostitem_post extends Fragment {
                                 public void onSuccess(Uri uri) {
 
                                     String key = ref.push().getKey();
-                                    Lostitem founditem = new Lostitem(titles, Des , Email, loc, time, cit,uri.toString(),Status,key);
+                                    String id = FirebaseAuth.getInstance().getUid();
+                                    Lostitem founditem = new Lostitem(titles, Des , Email, loc, time, cit,uri.toString(),Status,key,id);
 
                                     ref.child(key).setValue(founditem);
 
