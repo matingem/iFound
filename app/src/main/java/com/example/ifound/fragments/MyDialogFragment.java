@@ -76,11 +76,20 @@ public class MyDialogFragment extends DialogFragment {
 
                 String que = text.getEditText().getText().toString().trim();
 
-                Intent i = new Intent(getActivity(), MyService.class);
-                i.putExtra("query", que);
-                getActivity().startService(i);
+                if(que.isEmpty()){
+                    text.setError("Required");
+                    text.requestFocus();
+                }else if(que.length()<3){
+                    text.setError("Too Short");
+                    text.requestFocus();
+                }else {
+                    Intent i = new Intent(getActivity(), MyService.class);
+                    i.putExtra("query", que);
+                    getActivity().startService(i);
 
-                dismiss();
+                    dismiss();
+
+                }
             }
         });
 

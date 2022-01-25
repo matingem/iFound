@@ -209,6 +209,8 @@ public class found extends Fragment {
                         String update = Objects.requireNonNull(data.child("status").getValue()).toString();
                         String email = Objects.requireNonNull(data.child("email").getValue()).toString();
                         String id = Objects.requireNonNull(data.child("uid").getValue()).toString();
+//                        String name = Objects.requireNonNull(data.child("name").getValue()).toString();  //NEWW BY ME AMNA
+
 
                         Founditem founditem = new Founditem(title, discription , email, location, time, status,imageurl,update,key,id);
                         list.add(founditem);

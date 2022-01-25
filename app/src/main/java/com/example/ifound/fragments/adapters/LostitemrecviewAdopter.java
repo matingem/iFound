@@ -2,6 +2,7 @@ package com.example.ifound.fragments.adapters;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,10 +14,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ifound.ChatActivity;
 import com.example.ifound.R;
 import com.example.ifound.model.Founditem;
 import com.example.ifound.model.Lostitem;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -78,6 +81,13 @@ public class LostitemrecviewAdopter extends RecyclerView.Adapter <Lostitemrecvie
                 .into(holder.image);
 
 
+        String curuser = FirebaseAuth.getInstance().getUid();
+
+
+        if (id.equals(curuser)){
+            holder.lost.setVisibility(View.GONE);
+        }
+
         DatabaseReference ref4= FirebaseDatabase.getInstance().getReference().child("Users").child(id);
 
         ref4.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -86,6 +96,21 @@ public class LostitemrecviewAdopter extends RecyclerView.Adapter <Lostitemrecvie
 
                 String namee = dataSnapshot.child("Name").getValue(String.class);
                 holder.name.setText(namee);
+
+                holder.lost.setOnClickListener(new View.OnClickListener() {  //By amna
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent intent=new Intent(mContext, ChatActivity.class);
+                        intent.putExtra("name",namee);
+                        intent.putExtra("uid",lostitem.getUid()); //it passes unique ID
+//                    intent.putExtra("name",founditem.getName()); //new
+
+                        mContext.startActivity(intent);
+
+                    }
+
+                });
 
             }
 

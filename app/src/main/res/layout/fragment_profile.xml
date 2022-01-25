@@ -76,7 +76,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:layout_marginTop="10dp"
-                android:hint="Mateen Sajid"
+                android:hint="iFound User"
                 android:layout_marginBottom="30dp"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_15sdp" />

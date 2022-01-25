@@ -8,10 +8,9 @@ public class Founditem
     private String email,status;
     private String location;
     private String time;
+
     private String imageurl,city,key,Uid;
 
-    public Founditem() {
-    }
 
     public Founditem(String title, String discriotion, String email, String location, String time, String city,String imageurl,String status,String key,String uid) {
         this.title = title;
@@ -23,6 +22,7 @@ public class Founditem
         this.imageurl = imageurl;
         this.status = status;
         this.key = key; this.Uid = uid;
+
     }
 
     public String getKey() {
@@ -105,4 +105,6 @@ public class Founditem
     public void setcity (String city ) {
         this.city  = city ;
     }
+
+
 }

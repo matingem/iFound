@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ifound.R;
 import com.example.ifound.model.Founditem;
+import com.example.ifound.model.Founditem1;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,10 +43,10 @@ import java.util.List;
 
 
 public class EditPostAdopter extends RecyclerView.Adapter <EditPostAdopter.ViewHolder>{
-    private List<Founditem> list;
+    private List<Founditem1> list;
     private Context mContext;
 
-    private Founditem positions;
+    private Founditem1 positions;
     private FirebaseStorage mStorage;
     DatabaseReference mDatabaseRef;
 
@@ -54,7 +55,7 @@ public class EditPostAdopter extends RecyclerView.Adapter <EditPostAdopter.ViewH
 
     // RecyclerView recyclerView;
 
-    public EditPostAdopter(Context context, List<Founditem> listdata) {
+    public EditPostAdopter(Context context, List<Founditem1> listdata) {
         mContext = context;
         list = listdata;
         this.notifyDataSetChanged();
@@ -75,7 +76,7 @@ public class EditPostAdopter extends RecyclerView.Adapter <EditPostAdopter.ViewH
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        final Founditem founditem = list.get(position);
+        final Founditem1 founditem = list.get(position);
         positions =list.get(position);
         final String title = founditem.getTitle();
         final String discriotion = founditem.getDiscriotion();
@@ -200,7 +201,7 @@ public class EditPostAdopter extends RecyclerView.Adapter <EditPostAdopter.ViewH
     private void deleteProduct(){
         mStorage = FirebaseStorage.getInstance();
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("Found Items");
-        Founditem selectedItem = positions;
+        Founditem1 selectedItem = positions;
 
         StorageReference imageRef = mStorage.getReferenceFromUrl(selectedItem.getImageurl());
         imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {

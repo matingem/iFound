@@ -14,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -83,7 +84,6 @@ public class LostPostUser extends Fragment {
         btn = v.findViewById(R.id.post);
 
 
-
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -151,7 +151,6 @@ public class LostPostUser extends Fragment {
                     upload.setStatus(postSnapshot.child("city").getValue(String.class));
                     upload.setreward(postSnapshot.child("reward").getValue(String.class));
                     upload.setStatus(postSnapshot.child("status").getValue(String.class));
-                    upload.setUid(postSnapshot.child("uid").getValue(String.class));
 
 
                     mUploads.add(upload);

@@ -2,6 +2,7 @@ package com.example.ifound.fragments;
 
 import static android.view.View.GONE;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -14,6 +15,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -22,10 +24,12 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.ifound.ChatActivity;
 import com.example.ifound.R;
 import com.example.ifound.fragments.adapters.EditPostAdopter;
 import com.example.ifound.fragments.founditem_post;
 import com.example.ifound.model.Founditem;
+import com.example.ifound.model.Founditem1;
 import com.github.ybq.android.spinkit.sprite.Sprite;
 import com.github.ybq.android.spinkit.style.Circle;
 import com.github.ybq.android.spinkit.style.Pulse;
@@ -62,7 +66,7 @@ public class FoundPostUser extends Fragment {
     TextView text;
     Button btn;
 
-    private List<Founditem> mUploads;
+    private List<Founditem1> mUploads;
 
 
     @Nullable
@@ -80,6 +84,7 @@ public class FoundPostUser extends Fragment {
         Count = v.findViewById(R.id.count);
         coun = v.findViewById(R.id.co);
         btn = v.findViewById(R.id.post);
+
 
 
 
@@ -143,7 +148,7 @@ public class FoundPostUser extends Fragment {
 
 
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
-                    Founditem upload = postSnapshot.getValue(Founditem.class);
+                    Founditem1 upload = postSnapshot.getValue(Founditem1.class);
                     upload.setKey(postSnapshot.child("key").getValue(String.class));
                     upload.setTitle(postSnapshot.child("title").getValue(String.class));
                     upload.setImageurl(postSnapshot.child("imageurl").getValue(String.class));
@@ -152,7 +157,8 @@ public class FoundPostUser extends Fragment {
                     upload.setcity(postSnapshot.child("city").getValue(String.class));
                     upload.setLocation(postSnapshot.child("location").getValue(String.class));
                     upload.setStatus(postSnapshot.child("status").getValue(String.class));
-                    upload.setUid(postSnapshot.child("uid").getValue(String.class));
+
+
 
 
                     mUploads.add(upload);
