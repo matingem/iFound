@@ -68,7 +68,7 @@ public class forgotpassword extends AppCompatActivity {
             return;
         }
 
-        bar.setVisibility(View.VISIBLE);
+//        bar.setVisibility(View.VISIBLE);
         auth.sendPasswordResetEmail(emaill).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

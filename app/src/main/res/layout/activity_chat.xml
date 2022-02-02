@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ChatActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.widget.Toolbar
+            android:id="@+id/toolbar1"
+            android:background="#01CB8B"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.mikhaellopez.circularimageview.CircularImageView
+                android:id="@+id/pp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/avatar" />
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chat"
+                android:layout_marginLeft="@dimen/_25sdp"
+                android:textColor="#FFFFFF"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="bold"/>
+
+        </android.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/status"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+
+    <!--        android:layout_marginStart="24dp"-->
+    <!--        android:layout_marginEnd="316dp"-->
+    <!--        android:layout_marginBottom="12dp"-->
+    <!--        android:fontFamily="@font/robotoregular"-->
+    <!--        android:text="Online"-->
+    <!--        android:textColor="#FFFFFF"-->
+    <!--        android:textSize="15sp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/constraintLayout"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.517"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/statusname"-->
+    <!--        app:layout_constraintVertical_bias="1.0" />-->
+
+    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--        android:id="@+id/constraintLayout"-->
+    <!--        android:layout_width="0dp"-->
+    <!--        android:layout_height="600dp"-->
+    <!--        android:background="@drawable/bgconstraint"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHeight_percent=".78"-->
+    <!--        app:layout_constraintHorizontal_bias="1.0"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/imageView">-->
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview12"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/relative1"
+        android:layout_marginTop="60dp"
+        android:background="#F8F8FA"
+        />
+
+    <RelativeLayout
+        android:id="@+id/relative1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_alignParentBottom="true">
+
+        <EditText
+            android:id="@+id/chatsearch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#fff"
+            android:gravity="left"
+            android:hint="Type here"
+            android:padding="5dp" />
+
+        <ImageButton
+            android:id="@+id/btsend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/ic_send_message" />
+
+
+    </RelativeLayout>
+</RelativeLayout>
